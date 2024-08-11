@@ -1,0 +1,621 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    color: #00ff00;
+    background: #000;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    background: rgba(0, 128, 0, 0.8);
+    padding: 10px 0;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    position: relative;
+}
+
+header h1 {
+    color: #00ff00;
+    font-size: 3.5em;
+    text-align: center;
+}
+
+nav {
+    position: relative;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #00ff00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin: auto;
+}
+
+.menu-toggle .bar {
+    background-color: #00ff00;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+}
+
+section {
+    padding: 20px 0;
+}
+
+.flip-container {
+    perspective: 1000px;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: flip 5s infinite linear; /* Continuous flip animation */
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.front {
+    /* Remove any background or border here */
+    background: none;
+}
+
+.back {
+    /* Remove any background or border here */
+    background: none;
+    transform: rotateY(180deg);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+@keyframes flip {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+section h2 {
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 10px;
+}
+
+footer {
+    background: rgba(0, 128, 0, 0.8);
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    color: #00ff00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 128, 0, 0.8);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        z-index: 1000;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    nav ul li a {
+        font-size: 1.2em;
+    }
+
+    .menu-toggle {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .flip-container {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    nav ul li a {
+        font-size: 0.8em;
+    }
+
+    .flip-container {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Project 1 */
+/* Existing styles... */
+
+.project-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.project-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(0, 255, 0, 0.3);
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 0;
+}
+
+.project-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.project-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Pulsing glow animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+        transform: scale(1.05);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .project-button {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-button {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-button {
+        font-size: 0.8em;
+        padding: 5px 10px;
+    }
+}
+/* Project 1 */
+
+/* Application Button */
+.app-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    animation: glitch 2s infinite;
+}
+
+/* Glitch Animation */
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.app-button::before, .app-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 255, 0, 0.7);
+    z-index: -1;
+    clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+    animation: glitch-top 2s infinite;
+}
+
+.app-button::after {
+    clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+    animation: glitch-bottom 2.5s infinite;
+}
+
+@keyframes glitch-top {
+    0% {
+        transform: translate(0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: translate(-2px, -2px);
+        opacity: 1;
+    }
+    40% {
+        transform: translate(2px, 2px);
+        opacity: 0.5;
+    }
+    60% {
+        transform: translate(-2px, 2px);
+        opacity: 1;
+    }
+    80% {
+        transform: translate(2px, -2px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes glitch-bottom {
+    0% {
+        transform: translate(0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: translate(2px, 2px);
+        opacity: 1;
+    }
+    40% {
+        transform: translate(-2px, -2px);
+        opacity: 0.5;
+    }
+    60% {
+        transform: translate(2px, -2px);
+        opacity: 1;
+    }
+    80% {
+        transform: translate(-2px, 2px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .app-button {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-button {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-button {
+        font-size: 0.8em;
+        padding: 5px 10px;
+    }
+}
+/* Application Button */
+
+/* E-Mail Button */
+/* Existing styles... */
+
+/* Email Button Styling */
+.email-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
+}
+
+.email-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(0, 255, 0, 0.3);
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 0;
+}
+
+.email-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.email-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .email-button {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .email-button {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .email-button {
+        font-size: 0.8em;
+        padding: 5px 10px;
+    }
+}
+/* E-Mail Button */
+
+/* Instagram Button */
+.instagram-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
+}
+
+.instagram-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(0, 255, 0, 0.3);
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 0;
+}
+
+.instagram-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.instagram-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .instagram-button {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .instagram-button {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .instagram-button {
+        font-size: 0.8em;
+        padding: 5px 10px;
+    }
+}
+/* Instagram Button */
+
+/* Youtube Button */
+.youtube-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
+}
+
+.youtube-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(0, 255, 0, 0.3);
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 0;
+}
+
+.youtube-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.youtube-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .youtube-button {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .youtube-button {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .youtube-button {
+        font-size: 0.8em;
+        padding: 5px 10px;
+    }
+}
+/* Youtube Button */
